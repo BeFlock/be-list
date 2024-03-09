@@ -1,27 +1,33 @@
-# TodoManagement
+# BeFlock ToDo
+Este projeto foi desenvolvido com Angular 17, com o intuito de ter o Front-end de código aberto, permitindo colaboração e personalização pela comunidade. No entanto, salientamos que o Backend permanece privado e fechado, garantindo a segurança e a propriedade intelectual. 
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.2.3.
+## Descrição do Projeto
+Você já se viu perdido em meio a diversas tarefas e prazos, sem saber por onde começar? Apresentamos o BeFlock ToDo, a sua resposta para um gerenciamento de tarefas mais eficiente e organizado.
 
-## Development server
+**Recursos Principais:**
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+1.  **Interface Intuitiva:**
+    -   Uma interface limpa e intuitiva para facilitar a navegação e a adição rápida de tarefas.
 
-## Code scaffolding
+2.  **Organização Poderosa:**
+    -   Categorize suas tarefas por projetos, prioridades, ou prazos, mantendo tudo sob controle.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+3.  **Colaboração Sem Esforço:**
+    -   Compartilhe tarefas e projetos com colegas de equipe, amigos ou familiares, garantindo uma colaboração eficaz.
 
-## Build
+4.  **Lembretes e Notificações:**
+    -   Configure lembretes e receba notificações para garantir que você nunca perca um prazo importante.
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+5.  **Personalização Total:**
+    -   Adapte o todo-management ao seu estilo de trabalho com opções de personalização flexíveis.
 
-## Running unit tests
+**Por que escolher o BeFlock ToDo?**
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+-   **Eficiência Aprimorada:** Acelere a conclusão de tarefas com uma visão clara de suas prioridades e prazos.
+-   **Colaboração em Tempo Real:** Trabalhe de forma colaborativa com sua equipe em projetos compartilhados, mantendo todos atualizados.
+-   **Acesso em Qualquer Lugar:** Acesse suas tarefas em dispositivos móveis ou desktop, permitindo gerenciar suas responsabilidades de qualquer lugar.
+-   **Segurança Garantida:** Protegemos seus dados com as mais recentes medidas de segurança para garantir total confidencialidade.
+    
+Simplifique sua vida profissional e pessoal com o todo-management. Comece hoje mesmo a transformar suas tarefas em conquistas!
 
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+Visite [nosso site](https://todo.beflock.com/) para começar.
