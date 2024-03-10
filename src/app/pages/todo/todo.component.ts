@@ -3,14 +3,15 @@ import { TodoService } from '../../core/services/todo.service';
 import { ITodo } from '../../core/models/todo.model';
 import { TodoCardComponent } from '../../shared/components/todo-card/todo-card.component';
 import { SlidePanelComponent } from '../../shared/ui/slide-panel/slide-panel.component';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { apiEndpoint } from '../../core/constants/constants';
 
 @Component({
   selector: 'app-todo',
   standalone: true,
   templateUrl: './todo.component.html',
   styleUrl: './todo.component.css',
-  imports: [TodoCardComponent, SlidePanelComponent],
+  imports: [TodoCardComponent, SlidePanelComponent, ReactiveFormsModule],
 })
 export class TodoComponent implements OnInit {
   todos: ITodo[] = [];
@@ -45,5 +46,13 @@ export class TodoComponent implements OnInit {
 
   onCloseSlidePanel() {
     this.isSlidePanelOpen = false;
+  }
+
+  onSubmitFormTodo() {
+    if (this.todoForm.valid) {
+      console.log('OK');
+    } else {
+      this.todoForm.markAllAsTouched();
+    }
   }
 }

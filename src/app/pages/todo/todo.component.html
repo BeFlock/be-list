@@ -22,7 +22,7 @@
   [isOpen]="isSlidePanelOpen"
   (onClose)="onCloseSlidePanel()"
 >
-  <form action="">
+  <form [formGroup]="todoForm" (ngSubmit)="onSubmitFormTodo()" autocomplete="off" novalidate>
     <div class="form-group mb-3">
       <label for="title" class="form-label">Título</label>
       <input
