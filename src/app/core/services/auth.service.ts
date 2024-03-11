@@ -1,5 +1,10 @@
 import { Injectable } from '@angular/core';
-import { ILogin, ILoginResponse } from '../models/auth.mode';
+import {
+  ILogin,
+  ILoginResponse,
+  IRegister,
+  IRegisterResponse,
+} from '../models/auth.mode';
 import { HttpClient } from '@angular/common/http';
 import { TokenService } from './token.service';
 import { apiEndpoint } from '../constants/constants';
@@ -19,6 +24,16 @@ export class AuthService {
           if (response) {
             this.tokenService.setToken(response.token);
           }
+          return response;
+        })
+      );
+  }
+
+  onRegister(data: IRegister) {
+    return this.http
+      .post<IRegisterResponse>(`${apiEndpoint.AuthEndpoint.register}`, data)
+      .pipe(
+        map((response) => {
           return response;
         })
       );
