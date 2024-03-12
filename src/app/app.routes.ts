@@ -6,6 +6,7 @@ import { TodoComponent } from './pages/todo/todo.component';
 import { guestGuard } from './core/guards/guest.guard';
 import { authGuard } from './core/guards/auth.guard';
 import { RegisterComponent } from './pages/register/register.component';
+import { AboutComponent } from './pages/about/about.component';
 
 export const routes: Routes = [
   {
@@ -25,5 +26,11 @@ export const routes: Routes = [
     canActivate: [authGuard],
     component: MasterComponent,
     children: [{ path: 'todo', component: TodoComponent }],
+  },
+  {
+    path: '',
+    canActivate: [],
+    component: MasterComponent,
+    children: [{ path: 'about', component: AboutComponent }],
   },
 ];

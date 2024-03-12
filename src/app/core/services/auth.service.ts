@@ -20,9 +20,9 @@ export class AuthService {
     return this.http
       .post<ILoginResponse>(`${apiEndpoint.AuthEndpoint.login}`, data)
       .pipe(
-        map((response) => {
+        map((response) => {          
           if (response) {
-            this.tokenService.setToken(response.token);
+            this.tokenService.setToken(response.access_token);
           }
           return response;
         })
@@ -33,7 +33,7 @@ export class AuthService {
     return this.http
       .post<IRegisterResponse>(`${apiEndpoint.AuthEndpoint.register}`, data)
       .pipe(
-        map((response) => {
+        map((response) => {          
           return response;
         })
       );

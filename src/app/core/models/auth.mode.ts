@@ -21,7 +21,7 @@ export interface ILogin {
 }
 
 export interface ILoginResponse {
+  access_token: string;
   message: string;
-  token: string;
   user: IUser;
 }

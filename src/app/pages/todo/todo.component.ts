@@ -15,6 +15,7 @@ import { apiEndpoint } from '../../core/constants/constants';
 })
 export class TodoComponent implements OnInit {
   todos: ITodo[] = [];
+  todoId: number | null = null;
   todoForm!: FormGroup;
   isSlidePanelOpen: boolean = false;
   todoStatus: {key: string, value: string}[] = [
@@ -23,6 +24,7 @@ export class TodoComponent implements OnInit {
     { key: 'TESTING', value: 'TESTANDO' },
     { key: 'DONE', value: 'CONCLUÍDO' },
   ];
+  filterByStatus: string = '';
 
   constructor(private todoService: TodoService, private fb: FormBuilder) {
     this.todoForm = this.fb.group({
@@ -37,7 +39,11 @@ export class TodoComponent implements OnInit {
   }
 
   getAllTodos() {
-    this.todos = this.todoService.getAllTodo();
+    this.todoService.getAllTodo(this.filterByStatus).subscribe({
+      next: (response) => {
+        this.todos = response.data;
+      },
+    });
   }
 
   onOpenSlidePanel() {
@@ -46,13 +52,44 @@ export class TodoComponent implements OnInit {
 
   onCloseSlidePanel() {
     this.isSlidePanelOpen = false;
+    this.todoForm.patchValue({
+      title: '',
+      description: '',
+      status: 'OPEN',
+    });
   }
 
   onSubmitFormTodo() {
     if (this.todoForm.valid) {
-      console.log('OK');
+      if (this.todoId) {
+        this.todoService
+          .updateTodo(this.todoId, this.todoForm.value)
+          .subscribe({
+            next: (response) => {
+              this.getAllTodos();
+              this.onCloseSlidePanel();
+            },
+          });
+      } else {
+        this.todoService.addTodo(this.todoForm.value).subscribe({
+          next: (response) => {
+            this.getAllTodos();
+            this.onCloseSlidePanel();
+          },
+        });
+      }
     } else {
       this.todoForm.markAllAsTouched();
     }
+  }
+
+  onLoadTodoForm(item: ITodo) {
+    this.todoId = item.id!!;
+    this.todoForm.patchValue({
+      title: item.title,
+      description: item.description,
+      status: item.status,
+    });
+    this.onOpenSlidePanel();
   }
 }

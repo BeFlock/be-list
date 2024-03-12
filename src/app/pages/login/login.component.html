@@ -1,3 +1,6 @@
+<div class="flex justify-center pb-10">
+  <img class="w-32" src="./assets/logo.png" alt="BeList">
+</div>
 <div class="flex flex-col gap-2 p-6 bg-white rounded-lg shadow">
   <h5 class="text-xl mb-2 font-bold text-gray-900">Login</h5>
   <form
@@ -47,13 +50,13 @@
       />
       @if (loginForm.get('password')?.invalid && loginForm.get('password')?.touched) {
         @if (loginForm.get('password')?.hasError('required')) {
-          <span class="form-error">A Senha é obrigatório.</span>
+          <span class="form-error">A Senha é obrigatória.</span>
         } @else if (loginForm.get('password')?.hasError('minlength')) {
           <span class="form-error">
             A senha deve conter pelo menos {{ passwordMinLength }} dígitos.
           </span>
         } @else {
-        <span class="form-error">Senha inválido.</span>
+        <span class="form-error">Senha inválida.</span>
         } 
       }
     </div>
@@ -67,4 +70,7 @@
       Entrar
     </button>
   </form>
+</div>
+<div class="flex justify-center pt-4">
+  <a class="no-underline hover:underline" [href]="'register'">Criar sua conta aqui.</a>
 </div>

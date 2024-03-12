@@ -1,9 +1,16 @@
 <header class="app-header flex justify-center">
   <div class="container flex items-center justify-between">
-    <h4 class="font-bold text-xl">BeFlock ToDo</h4>
+    <h4 class="font-bold text-xl">
+      <img class="w-6" src="./assets/logo.png" alt="BeList">
+    </h4>
     <div class="flex gap-3">
-      <div class="px-2 font-medium cursor-pointer">Todos</div>
-      <div class="px-2 font-medium cursor-pointer">Logout</div>
+      @if ( this.isAuthenticated$ | async) {
+        <a class="px-2 font-medium cursor-pointer" [href]="'todo'">Tarefas</a>
+        <div class="px-2 font-medium cursor-pointer" (click)="onLogout()">Logout</div>
+      } @else {
+        <a class="px-2 font-medium cursor-pointer" [href]="'/'">Login</a>
+        <a class="px-2 font-medium cursor-pointer" [href]="'register'">Cadastro</a>
+      }
     </div>
   </div>
 </header>

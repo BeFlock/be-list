@@ -8,12 +8,12 @@ export const apiEndpoint = {
     loggedUser: `${apiurl}/user`,
   },
   TodoEndpoint: {
-    getAllTodo: `${apiurl}/todo`,
-    addTodo: `${apiurl}/todo`,
-    updateTodo: `${apiurl}/todo`,
+    getAllTodo: `${apiurl}/tasks`,
+    addTodo: `${apiurl}/tasks`,
+    updateTodo: `${apiurl}/tasks`,
   },
 };
 
 export const constants = {
-  CURRENT_TOKEN: 'AUTH_CURRENT_TOKEN_BEFLOCK_TODO',
+  CURRENT_TOKEN: 'AUTH_CURRENT_TOKEN_BELIST',
 };
