@@ -1,4 +1,7 @@
 # BeList
+
+[https://belist.beflock.com](https://belist.beflock.com/)
+
 Este projeto foi desenvolvido com Angular 17, com o intuito de ter o Front-end de código aberto, permitindo colaboração e personalização pela comunidade. No entanto, salientamos que o Backend permanece privado e fechado, garantindo a segurança e a propriedade intelectual. 
 
 ## Descrição do Projeto
