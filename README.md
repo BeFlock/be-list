@@ -30,4 +30,4 @@ Você já se viu perdido em meio a diversas tarefas e prazos, sem saber por onde
     
 Simplifique sua vida profissional e pessoal com o todo-management. Comece hoje mesmo a transformar suas tarefas em conquistas!
 
-Visite [nosso site](https://todo.beflock.com/) para começar.
+Visite [nosso site](https://belist.beflock.com/) para começar.
