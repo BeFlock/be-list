@@ -46,6 +46,12 @@ export class TodoComponent implements OnInit {
     });
   }
 
+  onFilterByStatus(status: string) {
+    this.filterByStatus = status;
+    this.getAllTodos();
+  }
+
+
   onOpenSlidePanel() {
     this.isSlidePanelOpen = true;
   }

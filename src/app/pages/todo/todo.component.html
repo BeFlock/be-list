@@ -10,6 +10,44 @@
     </button>
   </div>
 
+  <div class="flex flex-wrap mt-4 gap-2">
+    <button 
+      class="btn btn-sm btn-outline-primary" 
+      [class]="{'btn-primary': filterByStatus === ''}"
+      (click)="onFilterByStatus('')"
+    >
+      TODOS
+    </button>
+    <button 
+      class="btn btn-sm btn-outline-primary" 
+      [class]="{'btn-primary': filterByStatus === 'OPEN'}"
+      (click)="onFilterByStatus('OPEN')"
+    >
+      ABERTO
+    </button>
+    <button 
+      class="btn btn-sm btn-outline-primary break-words	" 
+      [class]="{'btn-primary': filterByStatus === 'PROGRESS'}"
+      (click)="onFilterByStatus('PROGRESS')"
+    >
+      EM ANDAMENTO
+    </button>
+    <button 
+      class="btn btn-sm btn-outline-primary" 
+      [class]="{'btn-primary': filterByStatus === 'TESTING'}"
+      (click)="onFilterByStatus('TESTING')"
+    >
+      TESTANDO
+    </button>
+    <button 
+      class="btn btn-sm btn-outline-primary" 
+      [class]="{'btn-primary': filterByStatus === 'DONE'}"
+      (click)="onFilterByStatus('DONE')"
+    >
+      CONCLUÍDO
+    </button>
+  </div>
+
   <div class="mt-3 bg-white rounded-md shadow">
     @for (item of todos; track $index) {
       <app-todo-card [type]="item.status" [todo]="item" (click)="onLoadTodoForm(item)"></app-todo-card>
