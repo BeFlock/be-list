@@ -52,7 +52,7 @@ export class TodoComponent implements OnInit {
 
   onCloseSlidePanel() {
     this.isSlidePanelOpen = false;
-    this.todoForm.patchValue({
+    this.todoForm.reset({
       title: '',
       description: '',
       status: 'OPEN',
