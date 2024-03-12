@@ -26,7 +26,8 @@ export const httpInterceptor: HttpInterceptorFn = (req, next) => {
         tokenService.removeToken();
         router.navigate(['']);
       }
-      const error = e.error?.error?.message || e.statusText;
+      
+      const error = e.error?.error?.message || e.error?.message || e.statusText;
       return throwError(() => error);
     })
   );

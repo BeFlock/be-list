@@ -61,6 +61,8 @@
   (onClose)="onCloseSlidePanel()"
 >
   <form [formGroup]="todoForm" (ngSubmit)="onSubmitFormTodo()" autocomplete="off" novalidate>
+    <app-alert [alert]="alert"></app-alert>
+    
     <div class="form-group mb-3">
       <label for="title" class="form-label">Título</label>
       <input

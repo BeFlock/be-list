@@ -1,15 +1,17 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { AuthService } from '../../core/services/auth.service';
+import { AlertComponent, IAlert } from "../../shared/ui/alert/alert.component";
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [ReactiveFormsModule],
   templateUrl: './login.component.html',
-  styleUrl: './login.component.css'
+  styleUrl: './login.component.css',
+  imports: [ReactiveFormsModule, AlertComponent]
 })
 export class LoginComponent {
+  alert: IAlert = { show: false };
   loginForm!: FormGroup;
   passwordMinLength: number = 8;
 
@@ -24,13 +26,15 @@ export class LoginComponent {
     if (this.loginForm.valid){
       this.authService.onLogin(this.loginForm.value).subscribe({
         next: () => {},
+        error: error => {
+          this.alert = {
+            show: true,
+            message: error
+          }
+        }
       })
     } else {
       this.loginForm.markAsTouched();
     }
-  }
-
-  change() {
-    console.log(this.loginForm);
   }
 }

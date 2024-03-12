@@ -2,17 +2,19 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { AuthService } from '../../core/services/auth.service';
 import { Router } from '@angular/router';
+import { IAlert, AlertComponent } from '../../shared/ui/alert/alert.component';
 
 @Component({
-  selector: 'app-register',
-  standalone: true,
-  imports: [ReactiveFormsModule],
-  templateUrl: './register.component.html',
-  styleUrl: './register.component.scss'
+    selector: 'app-register',
+    standalone: true,
+    templateUrl: './register.component.html',
+    styleUrl: './register.component.scss',
+    imports: [ReactiveFormsModule, AlertComponent]
 })
 export class RegisterComponent {
   loginForm!: FormGroup;
   passwordMinLength: number = 8;
+  alert: IAlert = { show: false };
 
   constructor(private fb: FormBuilder, private authService: AuthService, private router: Router) {
     this.loginForm = this.fb.group({
@@ -33,6 +35,12 @@ export class RegisterComponent {
         next: () => {
           this.router.navigate(['/']);
         },
+        error: error => {
+          this.alert = {
+            show: true,
+            message: error
+          }
+        }
       })
     } else {
       this.loginForm.markAsTouched();

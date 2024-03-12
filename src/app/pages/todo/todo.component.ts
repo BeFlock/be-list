@@ -5,13 +5,14 @@ import { TodoCardComponent } from '../../shared/components/todo-card/todo-card.c
 import { SlidePanelComponent } from '../../shared/ui/slide-panel/slide-panel.component';
 import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { apiEndpoint } from '../../core/constants/constants';
+import { IAlert, AlertComponent } from '../../shared/ui/alert/alert.component';
 
 @Component({
-  selector: 'app-todo',
-  standalone: true,
-  templateUrl: './todo.component.html',
-  styleUrl: './todo.component.css',
-  imports: [TodoCardComponent, SlidePanelComponent, ReactiveFormsModule],
+    selector: 'app-todo',
+    standalone: true,
+    templateUrl: './todo.component.html',
+    styleUrl: './todo.component.css',
+    imports: [TodoCardComponent, SlidePanelComponent, ReactiveFormsModule, AlertComponent]
 })
 export class TodoComponent implements OnInit {
   todos: ITodo[] = [];
@@ -25,6 +26,7 @@ export class TodoComponent implements OnInit {
     { key: 'DONE', value: 'CONCLUÍDO' },
   ];
   filterByStatus: string = '';
+  alert: IAlert = { show: false };
 
   constructor(private todoService: TodoService, private fb: FormBuilder) {
     this.todoForm = this.fb.group({
@@ -52,7 +54,8 @@ export class TodoComponent implements OnInit {
   }
 
 
-  onOpenSlidePanel() {
+  onOpenSlidePanel(old: boolean = false) {
+    if (old === false) this.todoId = null;
     this.isSlidePanelOpen = true;
   }
 
@@ -71,17 +74,29 @@ export class TodoComponent implements OnInit {
         this.todoService
           .updateTodo(this.todoId, this.todoForm.value)
           .subscribe({
-            next: (response) => {
+            next: () => {
               this.getAllTodos();
               this.onCloseSlidePanel();
             },
+            error: error => {
+              this.alert = {
+                show: true,
+                message: error
+              }
+            }
           });
       } else {
         this.todoService.addTodo(this.todoForm.value).subscribe({
-          next: (response) => {
+          next: () => {
             this.getAllTodos();
             this.onCloseSlidePanel();
           },
+          error: error => {
+            this.alert = {
+              show: true,
+              message: error
+            }
+          }
         });
       }
     } else {
@@ -96,6 +111,6 @@ export class TodoComponent implements OnInit {
       description: item.description,
       status: item.status,
     });
-    this.onOpenSlidePanel();
+    this.onOpenSlidePanel(true);
   }
 }
